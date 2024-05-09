@@ -1,0 +1,135 @@
+:root {
+  --bg-color: rgba(233, 233, 233, 0.596);
+  --box-shadows: 5px 5px 1px 0 rgba(206, 206, 206, 0.753);
+  --title-bg: #303030;
+
+  --header-white: #ffffff;
+  --header-dark: #303030;
+
+  --low-temp: rgb(5, 164, 175);
+  --high-temp: rgb(175, 5, 5);
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+
+  background-color: #f7f7f7;
+
+  font-size: 25px;
+  font-family: 'Roboto', courier;
+
+  display: grid;
+  grid-template-rows: 1fr 1.4fr;
+  grid-template-areas:
+    'current'
+    'forecast';
+}
+
+h1,
+h2,
+h3 {
+  color: var(--header-dark);
+}
+
+.divider {
+  opacity: 0.5;
+}
+
+/* TOP HALF */
+
+.current {
+  grid-area: current;
+  place-self: center;
+
+  padding: 15px 20px;
+  gap: 5px;
+  background-color: var(--bg-color);
+  box-shadow: var(--box-shadows);
+  border-radius: 5px;
+
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  grid-template-columns: 1fr;
+
+  place-items: center;
+}
+
+.current .weather-image {
+  width: 50px;
+  height: 50px;
+}
+
+.current .weather {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+}
+
+.current .weather p {
+  margin: 0;
+}
+.current .weather .weather-temperature {
+  font-weight: 600;
+}
+
+/* BOTTOM HALF */
+
+.forecast {
+  place-self: start center;
+
+  margin: 0 50px;
+  width: 100%;
+
+  display: flex;
+  gap: 15px;
+  text-align: center;
+  justify-content: center;
+  align-items: start;
+}
+
+.day-container {
+  width: clamp(300px, 30%, 400px);
+  border-radius: 5px;
+  padding-bottom: 10px;
+
+  background-color: var(--bg-color);
+  box-shadow: var(--box-shadows);
+
+  font-size: 22px;
+}
+.day-container h3 {
+  padding: 20px;
+
+  background-color: var(--title-bg);
+  border-radius: 5px 5px 0 0;
+  color: var(--header-white);
+}
+
+.forecast-info {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  height: fit-content;
+  margin-top: 10px;
+  margin-bottom: 5px;
+  padding: 0;
+}
+.forecast-info .weather-image {
+  width: 40px;
+  height: 40px;
+}
+
+.day-temperatures {
+  margin: 0;
+  font-weight: 600;
+
+}
+.min {
+  color: var(--low-temp);
+}
+.max {
+  color: var(--high-temp);
+}
