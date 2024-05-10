@@ -17,18 +17,33 @@ export async function getWeather(key, location, tempUnit) {
 
 function formatWeather(data, tempUnit) {
   // Current (top card)
-  let name = data.location.name;
-  let weatherName = data.current.condition.text;
-  let currentTemp = `${data.current[tempUnit]}°${tempUnit == 'temp_c' ? 'C' : 'F'}`;
-
-  let currentArray = [name, currentTemp, weatherName];
+  let currentObject = {
+    name: data.location.name,
+    condition: data.current.condition.text,
+    temperature: `${data.current[tempUnit]}°${tempUnit == 'temp_c' ? 'C' : 'F'}`,
+  }
 
   // Today (first bottom card)
-  let todayCondition = data.forecast.forecastday[0].day.condition.text;
-  let todayMin = data.forecast.forecastday[0].day[`min${tempUnit}`] + `°${tempUnit == 'temp_c' ? 'C' : 'F'}`;
-  let todayMax = data.forecast.forecastday[0].day[`max${tempUnit}`] + `°${tempUnit == 'temp_c' ? 'C' : 'F'}`;
-  
+  let todayObject = {
+    condition: data.forecast.forecastday[0].day.condition.text,
+    min: data.forecast.forecastday[0].day[`min${tempUnit}`] + `°${tempUnit == 'temp_c' ? 'C' : 'F'}`,
+    max: data.forecast.forecastday[0].day[`max${tempUnit}`] + `°${tempUnit == 'temp_c' ? 'C' : 'F'}`
+  };
 
-  let todayArray = [todayCondition, todayMin, todayMax];
-  return [currentArray, todayArray];
+  // Tomorrow (second bottom card)
+  let tomorrowObject = {
+    condition: data.forecast.forecastday[1].day.condition.text,
+    min: data.forecast.forecastday[1].day[`min${tempUnit}`] + `°${tempUnit == 'temp_c' ? 'C' : 'F'}`,
+    max: data.forecast.forecastday[1].day[`max${tempUnit}`] + `°${tempUnit == 'temp_c' ? 'C' : 'F'}`
+  };
+
+  // Third day (third bottom card)
+  let thirdObject = {
+    date: new Date(data.forecast.forecastday[2].date).toLocaleDateString('en-US', {weekday: 'long'}),
+    condition: data.forecast.forecastday[2].day.condition.text,
+    min: data.forecast.forecastday[2].day[`min${tempUnit}`] + `°${tempUnit == 'temp_c' ? 'C' : 'F'}`,
+    max: data.forecast.forecastday[2].day[`max${tempUnit}`] + `°${tempUnit == 'temp_c' ? 'C' : 'F'}`
+  };
+
+  return [currentObject, todayObject, tomorrowObject, thirdObject]
 }

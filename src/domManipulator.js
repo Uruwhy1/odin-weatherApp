@@ -15,20 +15,32 @@
   tomorrowMaxTemperature: document.querySelector('.tomorrow .max'),
 
   /* THIRD CARD */
+  thirdTitle: document.querySelector('.third h3'),
   thirdDescription: document.querySelector('.third .day-description'),
   thirdMinTemperature: document.querySelector('.third .min'),
   thirdMaxTemperature: document.querySelector('.third .max'),
 };
 
-export function updateDom(current, today) {
+export function updateDom(current, today, tomorrow, third) {
   /* current */
-  elementsObject.city.innerHTML = current[0];
-  elementsObject.weatherTemperature.innerHTML = current[1];
-  elementsObject.weatherCondition.innerHTML = current[2];
+  elementsObject.city.innerHTML = current.name;
+  elementsObject.weatherTemperature.innerHTML = current.temperature;
+  elementsObject.weatherCondition.innerHTML = current.condition;
 
   /* TODAY */
-  console.log(today)
-  elementsObject.todayDescription.innerHTML = today[0];
-  elementsObject.todayMinTemperature.innerHTML = today[1];
-  elementsObject.todayMaxTemperature.innerHTML = today[2];
+  elementsObject.todayDescription.innerHTML = today.condition;
+  elementsObject.todayMinTemperature.innerHTML = today.min;
+  elementsObject.todayMaxTemperature.innerHTML = today.max;
+
+  /* TOMORROW */ 
+  elementsObject.tomorrowDescription.innerHTML = tomorrow.condition;
+  elementsObject.tomorrowMinTemperature.innerHTML = tomorrow.min;
+  elementsObject.tomorrowMaxTemperature.innerHTML = tomorrow.max;
+
+  /* THIRD DAY */
+  elementsObject.thirdTitle.innerHTML = third.date;
+  
+  elementsObject.thirdDescription.innerHTML = third.condition;
+  elementsObject.thirdMinTemperature.innerHTML = third.min;
+  elementsObject.thirdMaxTemperature.innerHTML = third.max;
 }

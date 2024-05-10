@@ -1,20 +1,25 @@
 :root {
-  --bg-color: rgba(233, 233, 233, 0.596);
-  --box-shadows: 5px 5px 1px 0 rgba(206, 206, 206, 0.753);
-  --title-bg: #303030;
+    --page-bg: #6575a2;
+    --sub-header-bg: #909090;
+    --card-bg: #f3f3f3;
+  
+    --box-shadows: 5px 5px 0 #ffc300;
+  
+    --big-header-colour: #303030;
+    --sub-header-colour: #ffffff;
 
-  --header-white: #ffffff;
-  --header-dark: #303030;
-
-  --low-temp: rgb(5, 164, 175);
-  --high-temp: rgb(175, 5, 5);
+    --text-colour: #303030;
+    
+    --low-temp: rgb(5, 164, 175);
+    --high-temp: rgb(175, 5, 5);
 }
 
 body {
   width: 100vw;
   height: 100vh;
 
-  background-color: #f7f7f7;
+  background-color: var(--page-bg);
+  color: var(--text-colour);
 
   font-size: 25px;
   font-family: 'Roboto', courier;
@@ -22,29 +27,67 @@ body {
   display: grid;
   grid-template-rows: 1fr 1.4fr;
   grid-template-areas:
-    'current'
-    'forecast';
+    'current search search'
+    'forecast forecast forecast';
 }
 
-h1,
+* {
+  transition: background 0.3s ease;
+}
+
 h2,
 h3 {
-  color: var(--header-dark);
+  color: var(--small-header-colour);
+}
+
+h1 {
+  color: var(--big-header-colour);
 }
 
 .divider {
   opacity: 0.5;
 }
 
-/* TOP HALF */
+/* MODE SWITCH BUTTONS */ 
+.colour-mode {
+  position: absolute;
+  right: 20px;
+  top: 20px ;
 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+
+  outline: 1px solid #131313;
+  border-radius: 50px;
+
+  background-color: #6575a2;
+  padding: 10px;
+
+  color: #ffffff;
+  font-weight: 1000;
+
+  stroke: 2;
+  
+  transition: all 0.1s ease-in;
+}
+
+.right-press {
+  transform: rotate3D(1, 1, 1, 5deg);
+}
+.left-press {
+  transform: rotate3D(1, 1, 1, -5deg);
+}
+
+/* TOP HALF */
 .current {
   grid-area: current;
   place-self: center;
 
-  padding: 15px 20px;
+  padding: 20px 25px;
   gap: 5px;
-  background-color: var(--bg-color);
+  background-color: var(--card-bg);
   box-shadow: var(--box-shadows);
   border-radius: 5px;
 
@@ -77,15 +120,15 @@ h3 {
 /* BOTTOM HALF */
 
 .forecast {
+  grid-area: forecast;
   place-self: start center;
 
   margin: 0 50px;
   width: 100%;
 
   display: flex;
-  gap: 15px;
   text-align: center;
-  justify-content: center;
+  justify-content: space-evenly;
   align-items: start;
 }
 
@@ -94,7 +137,7 @@ h3 {
   border-radius: 5px;
   padding-bottom: 10px;
 
-  background-color: var(--bg-color);
+  background-color: var(--card-bg);
   box-shadow: var(--box-shadows);
 
   font-size: 22px;
@@ -102,9 +145,9 @@ h3 {
 .day-container h3 {
   padding: 20px;
 
-  background-color: var(--title-bg);
+  background-color: var(--sub-header-bg);
   border-radius: 5px 5px 0 0;
-  color: var(--header-white);
+  color: var(--sub-header-colour);
 }
 
 .forecast-info {
@@ -120,16 +163,76 @@ h3 {
 .forecast-info .weather-image {
   width: 40px;
   height: 40px;
+
+  margin-right: 4px;
 }
 
 .day-temperatures {
   margin: 0;
   font-weight: 600;
-
 }
 .min {
   color: var(--low-temp);
 }
 .max {
   color: var(--high-temp);
+}
+
+/* ----------------------------------------------- LIGHT/DARK MODE STUFF ------------------------------------------------------- */
+
+/* Dark mode system check */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --page-bg: #131313;
+    --card-bg: rgba(87, 84, 84, 0.596);
+    --sub-header-bg: #ffffff;
+  
+    --box-shadows: 5px 5px 0px 0 rgba(255, 255, 255, 0.753);
+  
+    --big-header-colour: #ffffff;
+    --sub-header-colour: #303030;
+  
+    --text-colour: #ffffff;
+  
+    --low-temp: rgb(74, 181, 189);
+    --high-temp: rgb(235, 99, 99);
+  
+    color: #ffffff;
+  }
+}
+
+/* Dark mode manual switch*/
+.dark-mode {
+  --page-bg: #131313;
+  --card-bg: rgba(87, 84, 84, 0.596);
+  --sub-header-bg: #ffffff;
+
+  --box-shadows: 5px 5px 0px 0 rgba(255, 255, 255, 0.753);
+
+  --big-header-colour: #ffffff;
+  --sub-header-colour: #303030;
+
+  --text-colour: #ffffff;
+
+  --low-temp: rgb(74, 181, 189);
+  --high-temp: rgb(235, 99, 99);
+
+  color: #ffffff;
+}
+
+/* Light mode manual switch */
+.light-mode {
+    --page-bg: #6575a2;
+    --sub-header-bg: #9b9b9b;
+    --card-bg: #f3f3f3;
+  
+    --box-shadows: 5px 5px 0 #ffc300;
+  
+    --big-header-colour: #303030;
+    --sub-header-colour: #ffffff;
+    
+    --text-colour: #303030;
+    
+    --low-temp: rgb(5, 164, 175);
+    --high-temp: rgb(175, 5, 5);
 }
