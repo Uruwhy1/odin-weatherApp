@@ -1,5 +1,11 @@
+let loaded = false;
 const elementsObject = {
+  /* COVER */
+  cover: document.querySelector('.cover'),
+  searchSVG:document.querySelector('.search svg'),
+
   /* TOP CARD */
+  country: document.querySelector('.current .free-text'),
   image: document.querySelector('.current .weather-image'),
   city: document.querySelector('.city-name'),
   weatherCondition: document.querySelector('.weather-description'),
@@ -40,7 +46,15 @@ const elementsObject = {
 };
 
 export function updateDom(current, today, tomorrow, third) {
+  /* COVER */
+  elementsObject.cover.style.animation = "hideCover 0.5s forwards";
+  elementsObject.searchSVG.style.animation = "none"
+  setTimeout(() => {
+    elementsObject.cover.style.display = "none"
+  }, 500);
+
   /* current */
+  elementsObject.country.innerHTML = current.country;
   elementsObject.city.innerHTML = current.name;
   elementsObject.weatherTemperature.innerHTML = current.temperature;
   elementsObject.weatherCondition.innerHTML = current.condition;
@@ -73,5 +87,4 @@ export function updateDom(current, today, tomorrow, third) {
   elementsObject.thirdMorning.innerHTML = third.morningData;
   elementsObject.thirdAfternoon.innerHTML = third.afternoonData;
   elementsObject.thirdEvening.innerHTML = third.eveningData;
-
 }

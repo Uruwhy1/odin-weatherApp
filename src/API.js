@@ -10,7 +10,7 @@ export async function getWeather(key, location, tempUnit) {
       throw new Error('Failed to fetch weather data');
     }
 
-    const data = await response.json();
+    const data = await response.json(); 
     return formatWeather(data, tempUnit);
   } catch (error) {
     console.error('Error fetching weather data:', error);
@@ -20,6 +20,7 @@ export async function getWeather(key, location, tempUnit) {
 function formatWeather(data, tempUnit) {
   // Current (top card)
   let currentObject = {
+    country: data.location.country,
     icon: data.current.condition.icon,
     name: data.location.name,
     condition: data.current.condition.text,

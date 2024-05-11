@@ -15,9 +15,26 @@ const images = importAllImages(
 
 // ------------------ ACTUAL CODE --------------------------------- //
 
-async function doStuff() {
-  let [currentArray, todayArray, tomorrowArray, thirdArray] = await getWeather(APIkey, "Montevideo", tempUnit);
-  updateDom(currentArray, todayArray, tomorrowArray, thirdArray)
+async function doStuff(location) {
+  let [currentArray, todayArray, tomorrowArray, thirdArray] = await getWeather(
+    APIkey,
+    location,
+    tempUnit,
+  );
+  updateDom(currentArray, todayArray, tomorrowArray, thirdArray);
 }
 
-doStuff()
+
+(function addEvents() {
+  const searchSVG = document.querySelector('.search svg');
+  const searchText = document.querySelector('.search input');
+  
+  searchSVG.addEventListener('click', function () {
+    searchSVG.style.animation = "rotate 0.8s linear infinite"
+    doStuff(searchText.value);
+  });
+  
+  document.addEventListener('DOMContentLoaded', function() {
+    searchText.value = "";
+  })
+})()
