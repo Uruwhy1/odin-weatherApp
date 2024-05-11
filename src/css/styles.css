@@ -1,17 +1,19 @@
 :root {
-    --page-bg: #6575a2;
-    --sub-header-bg: #909090;
+    --page-bg: #a0bded;
+    --sub-header-bg: #6575a2;
     --card-bg: #f3f3f3;
   
-    --box-shadows: 5px 5px 0 #ffc300;
+    --box-shadows: 5px 5px 0 var(--yellow-accent);
   
     --big-header-colour: #303030;
     --sub-header-colour: #ffffff;
 
     --text-colour: #303030;
-    
-    --low-temp: rgb(5, 164, 175);
-    --high-temp: rgb(175, 5, 5);
+    --yellow-accent: #ffc300;
+    --neutral-temperature: rgb(231, 235, 0);
+
+    --low-temp: rgb(123, 202, 255);
+    --high-temp: rgb(255, 93, 93);
 }
 
 body {
@@ -48,6 +50,11 @@ h1 {
   opacity: 0.5;
 }
 
+.accent-text {
+  color: var(--neutral-temperature);
+  font-weight: 600;
+}
+
 /* MODE SWITCH BUTTONS */ 
 .colour-mode {
   position: absolute;
@@ -59,10 +66,9 @@ h1 {
   align-items: center;
   gap: 10px;
 
-  outline: 1px solid #131313;
   border-radius: 50px;
 
-  background-color: #6575a2;
+  background-color: var(--sub-header-bg);
   padding: 10px;
 
   color: #ffffff;
@@ -113,9 +119,6 @@ h1 {
 .current .weather p {
   margin: 0;
 }
-.current .weather .weather-temperature {
-  font-weight: 600;
-}
 
 /* BOTTOM HALF */
 
@@ -156,7 +159,7 @@ h1 {
   align-items: center;
 
   height: fit-content;
-  margin-top: 10px;
+  margin-top: 15px;
   margin-bottom: 5px;
   padding: 0;
 }
@@ -178,19 +181,45 @@ h1 {
   color: var(--high-temp);
 }
 
+/* Morning, Afternoon, Evening styles */
+.small {
+  font-size: 0.8em; /* Make text smaller than daily forecast */
+}
+.small .weather-image {
+  width: 30px;
+  height: 30px;
+}
+
+.day-container h5 {
+  margin-top: 25px;
+}
+.day-container h5:first-of-type {
+  border-top: 2px solid var(--yellow-accent);
+  padding-top: 16px;
+  margin-top: 15px;
+}
+
+.last {
+  margin-bottom: 15px;
+  padding-bottom: 16px;
+
+  border-bottom: 2px solid var(--yellow-accent);
+
+}
+
 /* ----------------------------------------------- LIGHT/DARK MODE STUFF ------------------------------------------------------- */
 
 /* Dark mode system check */
 @media (prefers-color-scheme: dark) {
   :root {
-    --page-bg: #131313;
-    --card-bg: rgba(87, 84, 84, 0.596);
-    --sub-header-bg: #ffffff;
+    --page-bg: #6575a2;
+    --card-bg: rgba(63, 61, 61, 0.596);
+    --sub-header-bg: #a0bded;
   
-    --box-shadows: 5px 5px 0px 0 rgba(255, 255, 255, 0.753);
+    --box-shadows: 5px 5px 0px 0 #ffc300;
   
     --big-header-colour: #ffffff;
-    --sub-header-colour: #303030;
+    --sub-header-colour: #ffffff;
   
     --text-colour: #ffffff;
   
@@ -203,14 +232,14 @@ h1 {
 
 /* Dark mode manual switch*/
 .dark-mode {
-  --page-bg: #131313;
-  --card-bg: rgba(87, 84, 84, 0.596);
-  --sub-header-bg: #ffffff;
+  --page-bg: #6575a2;
+  --card-bg: rgba(63, 61, 61, 0.596);
+  --sub-header-bg: #a0bded;
 
-  --box-shadows: 5px 5px 0px 0 rgba(255, 255, 255, 0.753);
+  --box-shadows: 5px 5px 0px 0 #ffc300;
 
   --big-header-colour: #ffffff;
-  --sub-header-colour: #303030;
+  --sub-header-colour: #ffffff;
 
   --text-colour: #ffffff;
 
@@ -220,10 +249,13 @@ h1 {
   color: #ffffff;
 }
 
+
+
+
 /* Light mode manual switch */
 .light-mode {
-    --page-bg: #6575a2;
-    --sub-header-bg: #9b9b9b;
+    --page-bg: #a0bded;
+    --sub-header-bg: #6575a2;
     --card-bg: #f3f3f3;
   
     --box-shadows: 5px 5px 0 #ffc300;
@@ -233,6 +265,6 @@ h1 {
     
     --text-colour: #303030;
     
-    --low-temp: rgb(5, 164, 175);
-    --high-temp: rgb(175, 5, 5);
+    --low-temp: rgb(123, 202, 255);
+    --high-temp: rgb(255, 93, 93);
 }

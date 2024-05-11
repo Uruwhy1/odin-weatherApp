@@ -9,6 +9,7 @@ function importAllImages(r) {
 }
 // eslint-disable-next-line no-unused-vars
 const images = importAllImages(
+  // eslint-disable-next-line no-undef
   require.context('./images/', false, /\.(png|jpe?g|svg)$/),
 );
 
@@ -20,6 +21,3 @@ async function doStuff() {
 }
 
 doStuff()
-
-
-

@@ -17,6 +17,9 @@ export async function getPosition() {
   }
 }
 
+// GET CURRENT TIMEZONE
+export let zone = new Date().toLocaleTimeString('en-us',{timeZoneName:'short'}).split(' ')[2].split('-')[0];
+
 // Dark Mode / Light Mode Functionality
 (function colorMode() {
   const colorContainer = document.querySelector('.colour-mode');
@@ -55,3 +58,11 @@ export async function getPosition() {
     modeToggleLight.style.fill = 'yellow';
   });
 })()
+
+/* GET MOST REPEATED VALUE */
+export function mode(arr){
+  return arr.sort((a,b) =>
+        arr.filter(v => v===a).length
+      - arr.filter(v => v===b).length
+  ).pop();
+}
