@@ -1,24 +1,18 @@
-/* eslint-disable no-unused-vars */
 export const APIkey = '2c9441f60c944d63996153000242204';
 export let tempUnit = 'temp_c';
-export let currentPosition = getPosition();
-
-// GET CURRENT POSITION
-export async function getPosition() {
-  try {
-    const position = await new Promise((resolve, reject) => {
-      navigator.geolocation.getCurrentPosition(resolve, reject);
-    });
-    return position.coords.latitude + ',' + position.coords.longitude;
-  } catch (error) {
-    // Handle errors here
-    console.error('Error getting current position:', error);
-    return 'Error getting current position';
-  }
-}
 
 // GET CURRENT TIMEZONE
 export let zone = new Date().toLocaleTimeString('en-us',{timeZoneName:'short'}).split(' ')[2].split('-')[0];
+
+
+/* GET MOST REPEATED VALUE */
+export function mode(arr){
+  return arr.sort((a,b) =>
+        arr.filter(v => v===a).length
+      - arr.filter(v => v===b).length
+  ).pop();
+}
+
 
 // Dark Mode / Light Mode Functionality
 (function colorMode() {
@@ -32,7 +26,6 @@ export let zone = new Date().toLocaleTimeString('en-us',{timeZoneName:'short'}).
     body.classList.remove('light-mode');
     body.classList.add('dark-mode');
 
-    colorContainer.style.boxShadow = '-8px 5px 0 #ffc300';
     colorContainer.classList.remove('right-press');
     colorContainer.classList.add('left-press');
 
@@ -47,7 +40,6 @@ export let zone = new Date().toLocaleTimeString('en-us',{timeZoneName:'short'}).
     body.classList.remove('dark-mode');
     body.classList.add('light-mode');
 
-    colorContainer.style.boxShadow = '8px 5px 0 #ffc300';
     colorContainer.classList.remove('left-press');
     colorContainer.classList.add('right-press');
 
@@ -59,10 +51,27 @@ export let zone = new Date().toLocaleTimeString('en-us',{timeZoneName:'short'}).
   });
 })()
 
-/* GET MOST REPEATED VALUE */
-export function mode(arr){
-  return arr.sort((a,b) =>
-        arr.filter(v => v===a).length
-      - arr.filter(v => v===b).length
-  ).pop();
-}
+// Celsius Mode / Fahrenheit Mode Functionality
+
+function temperatureToggle() {
+  const tempContainer = document.querySelector('.unit');
+  const celsiusToggle = document.querySelector('.celsius');
+  const farenheitToggle = document.querySelector('.fahrenheit');
+
+  tempContainer.classList.add('left-press');
+
+
+  celsiusToggle.addEventListener('click', () => {
+    tempUnit = 'temp_c'
+    console.log(tempUnit)
+    tempContainer.classList.remove('right-press');
+    tempContainer.classList.add('left-press');
+  })
+
+  farenheitToggle.addEventListener('click', () => {
+    tempUnit = 'temp_f'
+    tempContainer.classList.remove('left-press');
+    tempContainer.classList.add('right-press');
+  });
+};
+temperatureToggle()

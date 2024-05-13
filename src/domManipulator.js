@@ -1,4 +1,3 @@
-let loaded = false;
 const elementsObject = {
   /* COVER */
   cover: document.querySelector('.cover'),
@@ -54,12 +53,16 @@ export function updateDom(current, today, tomorrow, third) {
   }, 500);
 
   /* current */
+  elementsObject.image.src = current.icon;
+
   elementsObject.country.innerHTML = current.country;
   elementsObject.city.innerHTML = current.name;
   elementsObject.weatherTemperature.innerHTML = current.temperature;
   elementsObject.weatherCondition.innerHTML = current.condition;
 
   /* TODAY */
+  elementsObject.todayImage.src = today.icon;
+
   elementsObject.todayDescription.innerHTML = today.condition;
   elementsObject.todayMinTemperature.innerHTML = today.min;
   elementsObject.todayMaxTemperature.innerHTML = today.max;
@@ -69,6 +72,9 @@ export function updateDom(current, today, tomorrow, third) {
   elementsObject.todayEvening.innerHTML = today.eveningData;
 
   /* TOMORROW */
+  elementsObject.tomorrowImage.src = tomorrow.icon;
+
+
   elementsObject.tomorrowDescription.innerHTML = tomorrow.condition;
   elementsObject.tomorrowMinTemperature.innerHTML = tomorrow.min;
   elementsObject.tomorrowMaxTemperature.innerHTML = tomorrow.max;
@@ -79,6 +85,8 @@ export function updateDom(current, today, tomorrow, third) {
 
   /* THIRD DAY */
   elementsObject.thirdTitle.innerHTML = third.date;
+
+  elementsObject.thirdImage.src = third.icon;
 
   elementsObject.thirdDescription.innerHTML = third.condition;
   elementsObject.thirdMinTemperature.innerHTML = third.min;

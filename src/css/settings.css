@@ -1,0 +1,61 @@
+/* MODE SWITCH BUTTONS */
+.colour-mode {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  z-index: 1000;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+
+  border-radius: 50px;
+
+  background-color: var(--sub-header-bg);
+  padding: 10px;
+
+  color: #ffffff;
+  font-weight: 1000;
+
+  stroke: 2;
+
+  transition: all 0.1s ease-in;
+  cursor: pointer;
+}
+
+.right-press {
+  transform: rotate3D(1, 1, 1, 5deg);
+  box-shadow: 8px 5px 0 #ffc300;
+
+}
+.left-press {
+  transform: rotate3D(1, 1, 1, -5deg);
+  box-shadow: -8px 5px 0 #ffc300;
+}
+
+
+.unit {
+  position: absolute;
+  right: 20px;
+  top: 80px;
+  z-index: 1000;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+
+  border-radius: 50px;
+
+  background-color: var(--sub-header-bg);
+  padding: 10px;
+
+  color: #ffffff;
+  font-weight: 1000;
+
+  stroke: 2;
+
+  transition: all 0.1s ease-in;
+  cursor: pointer;
+}

@@ -154,7 +154,7 @@ function getAverageWeather(dayData, timeOfDay, tempUnit) {
     Math.floor(
       weatherTempArray.reduce((a, b) => a + b) / weatherTempArray.length,
     ) +
-    '°C' +
+    `°${tempUnit == 'temp_c' ? 'C' : 'F'}` +
     '</span>'
   );
 }
