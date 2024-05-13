@@ -1,22 +1,3 @@
-:root {
-  --cover-bg: rgba(255, 255, 255, 0.8);
-  --page-bg: #a0bded;
-  --sub-header-bg: #6575a2;
-  --card-bg: #f3f3f3;
-
-  --box-shadows: 5px 5px 0 var(--yellow-accent);
-
-  --big-header-colour: #303030;
-  --sub-header-colour: #ffffff;
-
-  --text-colour: #303030;
-  --yellow-accent: #ffc300;
-  --neutral-temperature: rgb(231, 235, 0);
-
-  --low-temp: rgb(123, 202, 255);
-  --high-temp: rgb(255, 93, 93);
-}
-
 body {
   width: 100vw;
   height: 100vh;
@@ -28,10 +9,11 @@ body {
   font-family: 'Roboto', courier;
 
   display: grid;
-  grid-template-rows: 1fr 1.4fr;
+  grid-template-rows: 1fr 1.4fr 25px;
   grid-template-areas:
     'current search search'
-    'forecast forecast forecast';
+    'forecast forecast forecast'
+    'footer footer footer';
 }
 
 * {
@@ -69,7 +51,7 @@ h1 {
 
   transition: none;
 
-  display: flex;
+  display: none;
   justify-content: center;
   align-items: center;
 }
@@ -266,66 +248,31 @@ h1 {
   border-bottom: 2px solid var(--yellow-accent);
 }
 
-/* ----------------------------------------------- LIGHT/DARK MODE STUFF ------------------------------------------------------- */
+/* --------- FOOTER -------------------------- */
 
-/* Dark mode system check */
-@media (prefers-color-scheme: dark) {
-  :root {
-    --cover-bg: rgba(97, 97, 97, 0.8);
-    --page-bg: #6575a2;
-    --card-bg: rgba(63, 61, 61, 0.596);
-    --sub-header-bg: #a0bded;
+.footer {
+  grid-area: footer;
+  bottom: 20;
 
-    --box-shadows: 5px 5px 0px 0 #ffc300;
+  color: var(--text-colour);
+  font-weight: 500;
 
-    --big-header-colour: #ffffff;
-    --sub-header-colour: #ffffff;
+  background-color: #fff;
+  border-top: 2px solid black;
+  width: 100%;
 
-    --text-colour: #ffffff;
+  display: grid;
+  place-content: center;
 
-    --low-temp: rgb(74, 181, 189);
-    --high-temp: rgb(235, 99, 99);
-
-    color: #ffffff;
-  }
+  font-size: 16px;
 }
 
-/* Dark mode manual switch*/
-.dark-mode {
-  --cover-bg: rgba(97, 97, 97, 0.8);
-  --page-bg: #6575a2;
-  --card-bg: rgba(63, 61, 61, 0.596);
-  --sub-header-bg: #a0bded;
-
-  --box-shadows: 5px 5px 0px 0 #ffc300;
-
-  --big-header-colour: #ffffff;
-  --sub-header-colour: #ffffff;
-
-  --text-colour: #ffffff;
-
-  --low-temp: rgb(74, 181, 189);
-  --high-temp: rgb(235, 99, 99);
-
-  color: #ffffff;
+.footer a {
+  color: rgb(52, 133, 136);
+  text-decoration: none;
+}
+.footer a:hover {
+  text-decoration: underline;
 }
 
-/* Light mode manual switch */
-.light-mode {
-  --cover-bg: rgba(255, 255, 255, 0.8);
-  --page-bg: #a0bded;
-  --sub-header-bg: #6575a2;
-  --card-bg: #f3f3f3;
 
-  --box-shadows: 5px 5px 0 var(--yellow-accent);
-
-  --big-header-colour: #303030;
-  --sub-header-colour: #ffffff;
-
-  --text-colour: #303030;
-  --yellow-accent: #ffc300;
-  --neutral-temperature: rgb(231, 235, 0);
-
-  --low-temp: rgb(123, 202, 255);
-  --high-temp: rgb(255, 93, 93);
-}

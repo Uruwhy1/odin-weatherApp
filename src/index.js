@@ -6,6 +6,7 @@ import './css/reset.css';
 import './css/fonts.css';
 import './css/styles.css';
 import './css/settings.css';
+import './css/lightdarkMode.css';
 
 
 // ------------------ ACTUAL CODE --------------------------------- //
