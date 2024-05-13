@@ -51,7 +51,7 @@ h1 {
 
   transition: none;
 
-  display: none;
+  display: flex;
   justify-content: center;
   align-items: center;
 }
@@ -172,6 +172,7 @@ h1 {
   width: 100%;
 
   display: flex;
+  flex-wrap: wrap;
   text-align: center;
   justify-content: space-evenly;
   align-items: start;
@@ -254,7 +255,7 @@ h1 {
   grid-area: footer;
   bottom: 20;
 
-  color: var(--text-colour);
+  color: #000;
   font-weight: 500;
 
   background-color: #fff;
@@ -276,3 +277,26 @@ h1 {
 }
 
 
+@media screen and (max-width: 1050px) {
+  .forecast {
+    flex-wrap: wrap;
+    gap: 25px;
+
+    justify-content: center;
+    align-items: center;
+
+    margin: 25px 10px;
+  }
+
+  .current {
+    margin-top: 25px;
+    margin-left: 15px;
+  }
+  .instructions {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  
+}
