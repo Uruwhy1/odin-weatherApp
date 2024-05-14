@@ -1,6 +1,6 @@
 import { getWeather } from './API';
 import { APIkey, tempUnit } from './utilities';
-import { updateDom } from './domManipulator';
+import { errorCatch, updateDom } from './domManipulator';
 
 import './css/reset.css';
 import './css/fonts.css';
@@ -13,12 +13,16 @@ import './css/styles.css';
 // ------------------ ACTUAL CODE --------------------------------- //
 
 async function doStuff(location) {
-  let [currentArray, todayArray, tomorrowArray, thirdArray] = await getWeather(
-    APIkey,
-    location,
-    tempUnit,
-  );
-  updateDom(currentArray, todayArray, tomorrowArray, thirdArray);
+  try {
+    let [currentArray, todayArray, tomorrowArray, thirdArray] = await getWeather(
+      APIkey,
+      location,
+      tempUnit
+    );
+    updateDom(currentArray, todayArray, tomorrowArray, thirdArray);
+  } catch (error) {
+    errorCatch();
+  }
 }
 
 (function addEvents() {

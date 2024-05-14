@@ -1,6 +1,8 @@
 const elementsObject = {
   /* COVER */
   cover: document.querySelector('.cover'),
+  search: document.querySelector('.search'),
+  searchText: document.querySelector('.search input'),
   searchSVG:document.querySelector('.search svg'),
 
   /* TOP CARD */
@@ -95,4 +97,14 @@ export function updateDom(current, today, tomorrow, third) {
   elementsObject.thirdMorning.innerHTML = third.morningData;
   elementsObject.thirdAfternoon.innerHTML = third.afternoonData;
   elementsObject.thirdEvening.innerHTML = third.eveningData;
+}
+
+export function errorCatch() {
+  elementsObject.searchSVG.style.animation = "none";
+  elementsObject.searchText.value = "";
+
+  elementsObject.search.style.animation = "wrong 0.3s linear forwards";
+  setTimeout(() => {
+    elementsObject.search.style.animation = "wrong-out 0.3s linear forwards";
+  }, 1500);
 }

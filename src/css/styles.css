@@ -16,6 +16,24 @@ body {
     'footer footer footer';
 }
 
+@keyframes wrong {
+  0% {
+    border: 0px;
+  }
+  100% {  
+    border-bottom: 6px inset red;
+  }
+}
+@keyframes wrong-out {
+  0% {
+    border-bottom: 6px inset red;
+  }
+  100% {  
+    border: 0px;
+  }
+}
+
+
 * {
   transition: background 0.3s ease;
 }
@@ -295,8 +313,4 @@ h1 {
   .instructions {
     display: none;
   }
-}
-
-@media screen and (max-width: 500px) {
-  
 }
